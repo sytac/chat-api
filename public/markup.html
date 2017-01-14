@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width,initial-scale=1" name="viewport">
+	<link href="/favicon.ico" rel="shortcut icon">
+	<link href="style.css" rel="stylesheet">
+	<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js">
+	</script>
+	<script src="https://sytac-chat.firebaseapp.com/chat-api.js">
+	</script>
+	<title>React App</title>
+	<style>
+	   * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box
+       }
+       html {
+           overflow: hidden;
+           font-family: helvetica, sans-serif;
+           font-size: 18px
+       }
+       body,
+       html {
+           height: 100%
+       }
+       body {
+           overflow: auto
+       }
+       #root {
+           height: 100%
+       }
+       .login {
+           margin: 100px auto;
+           width: 500px
+       }
+       .login button {
+           border: 1px solid #ddd;
+           font-size: 18px;
+           background-color: #f3f3f3;
+           padding: 10px;
+           margin: 10px
+       }
+       .chat {
+           height: 100%
+       }
+       .chat header {
+           position: fixed;
+           height: 40px;
+           padding: 10px;
+           background: #fff;
+           width: 100%;
+           border-bottom: 1px solid #ddd;
+           display: -webkit-box;
+           display: -webkit-flex;
+           display: -ms-flexbox;
+           display: flex;
+           -webkit-box-orient: horizontal;
+           -webkit-box-direction: normal;
+           -webkit-flex-direction: row;
+           -ms-flex-direction: row;
+           flex-direction: row
+       }
+       .chat header h1 {
+           font-size: 20px;
+           margin-right: 10px
+       }
+       .chat main {
+           padding-top: 40px;
+           box-sizing: border-box;
+           -webkit-box-orient: horizontal;
+           -webkit-flex-direction: row;
+           -ms-flex-direction: row;
+           flex-direction: row
+       }
+       .chat main,
+       .chat section {
+           height: 100%;
+           display: -webkit-box;
+           display: -webkit-flex;
+           display: -ms-flexbox;
+           display: flex;
+           -webkit-box-direction: normal
+       }
+       .chat section {
+           -webkit-box-flex: 1;
+           -webkit-flex: 1;
+           -ms-flex: 1;
+           flex: 1;
+           -webkit-box-orient: vertical;
+           -webkit-flex-direction: column;
+           -ms-flex-direction: column;
+           flex-direction: column
+       }
+       .chat input {
+           margin: 10px;
+           padding: 10px;
+           font-size: 18px
+       }
+       .chat aside {
+           width: 200px
+       }
+       .messages {
+           padding: 10px;
+           -webkit-box-flex: 1;
+           -webkit-flex: 1 1 auto;
+           -ms-flex: 1 1 auto;
+           flex: 1 1 auto;
+           overflow-y: auto;
+           min-height: 0
+       }
+       .message span {
+           font-weight: 700
+       }
+       .message small {
+           font-size: 10px;
+           color: #999;
+           font-weight: 400
+       }
+       .users {
+           padding: 10px;
+           margin: 0;
+           list-style: none
+       }
+       .users li.online:before {
+           content: "\2022   ";
+           color: green
+       }
+	</style>
+</head>
+<body>
+	<div id="root">
+		<div class="chat" data-reactroot="">
+			<header>
+				<h1>#Sytac</h1><button>Sign out</button>
+			</header>
+			<main>
+				<section>
+					<ul class="messages">
+						<li class="message">
+							<span><!-- react-text: 18 -->Tom Hastjarjanto<!-- /react-text --><!-- react-text: 19 --> <!-- /react-text --><small>23:29</small></span>
+							<p>Hi all</p>
+						</li>
+						<li class="message">
+							<span><!-- react-text: 24 -->Tom Hastjarjanto<!-- /react-text --><!-- react-text: 25 --> <!-- /react-text --><small>23:30</small></span>
+							<p>&lt;h1&gt;Html injections!&lt;/h1&gt;</p>
+						</li>
+						<li class="message">
+							<span><!-- react-text: 30 -->Edgar Kraaikamp<!-- /react-text --><!-- react-text: 31 --> <!-- /react-text --><small>12:02</small></span>
+							<p>Hello!!</p>
+						</li>
+						<li class="message">
+							<span><!-- react-text: 36 -->Joris Snaras<!-- /react-text --><!-- react-text: 37 --> <!-- /react-text --><small>17:07</small></span>
+							<p>boo</p>
+						</li>
+						<li class="message">
+							<span><!-- react-text: 42 -->Tom Hastjarjanto<!-- /react-text --><!-- react-text: 43 --> <!-- /react-text --><small>21:43</small></span>
+							<p>test</p>
+						</li>
+						<li class="message">
+							<span><!-- react-text: 48 -->Tom Hastjarjanto<!-- /react-text --><!-- react-text: 49 --> <!-- /react-text --><small>22:25</small></span>
+							<p>hello</p>
+						</li>
+					</ul><input id="message" placeholder="Say hello!" type="text" value="">
+				</section>
+				<aside>
+					<ul class="users">
+						<li class="online">Tom Hastjarjanto</li>
+						<li class="offline">Edgar Kraaikamp</li>
+						<li class="offline">Joris Snaras</li>
+					</ul>
+				</aside>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

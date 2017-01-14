@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sytac chat</title>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script src="chat-api.js"></script>
+    <script>
+      const chatApi = new ChatApi();
+      chatApi.onAuth((user) => {
+        if (user) {
+          window.user = user;
+          chatApi.onMessage((payload) => {
+            const message = payload.val();
+            const p = document.createElement('p');
+            p.textContent = `${message.userName} ${new Date(message.timestamp)} ${message.message}`;
+            document.getElementById('messages').appendChild(p);
+            window.scrollTo(0,document.body.scrollHeight);
+          });
+        } else {
+          const messages = document.getElementById('messages');
+          if (messages) {
+            messages.innerHTML = '';
+          }
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <header style="position: fixed; background: white;">
+      <button onClick="chatApi.isSignedIn() ? chatApi.signOut() : chatApi.signIn()">Log in</button>
+      <input id="message" />
+      <button onclick="chatApi.post(window.user, document.getElementById('message').value)">Post</Button>
+    </header>
+    <ul id="messages" style="padding-top: 40px">
+
+    </ul>
+    </body>
+</html>
